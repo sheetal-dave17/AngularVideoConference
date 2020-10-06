@@ -1,0 +1,25 @@
+<div class="main">
+
+  <h1>Zoom Integration in Angular App</h1>
+
+  <button (click)="getSignature(122, 1)">Start New Meeting</button>
+
+  <br/>
+
+  <button (click)="createMeeting('payload')">Schedule New Webinar</button>
+  <hr/>
+  <div *ngIf="meetings?.length === 0">
+    <p> There are no upcoming webinars </p>
+  </div>
+  <h1 *ngIf="meetings.length"> Upcoming webinars </h1>
+  <hr />
+  <div class="row meeting" *ngFor="let meeting of meetings">
+    <p>  {{meeting.topic}} </p>
+    <p><button (click)="getSignature(meeting.id, 0)">Join Meeting</button></p>
+    <!-- <a href="{{meeting.join_url}}"> Join </a>-->
+    <p> {{meeting.start_time | date: 'yyyy/MM/dd  hh:mm'}} </p>
+    <br/>
+    <hr/>
+  </div>
+
+</div>
